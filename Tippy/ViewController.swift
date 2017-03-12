@@ -15,11 +15,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
 
+    var darkMode: Bool?
+
     var Timestamp: TimeInterval {
         return Date().timeIntervalSince1970
     }
 
     let defaults = UserDefaults.standard
+
+    override func viewWillAppear(_ animated: Bool) {
+
+        billField.borderStyle = .none
+        billField.layer.borderWidth = 0
+
+        self.darkMode = defaults.bool(forKey: "DarkModeEnabled")
+        setBackgroundColours()
+
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +55,7 @@ class ViewController: UIViewController {
     }
 
     func applicationWillEnterForeground(notification: NSNotification) {
+        self.darkMode = false
         let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
 
         if (elapsed < (5 * 60)) {
@@ -96,6 +110,43 @@ class ViewController: UIViewController {
         defaults.set(tipControl.selectedSegmentIndex, forKey: "TipControlSegmentIndex")
 
         defaults.synchronize()
+    }
+
+    func setBackgroundColours() {
+        if (!self.darkMode!) {
+
+            billField.textColor = UIColor(red: 0.2, green: 0.15, blue: 0.15, alpha: 1)
+            tipLabel.textColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+
+            totalLabel.textColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+            totalLabel.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+
+            tipControl.tintColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+            self.view.backgroundColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .default
+
+            billField.keyboardAppearance = .light
+            billField.resignFirstResponder()
+            billField.becomeFirstResponder()
+        }
+        //DARK
+        else {
+            billField.textColor = UIColor.white
+            billField.attributedPlaceholder = NSAttributedString(string: billField.placeholder!,
+                    attributes: [NSForegroundColorAttributeName: UIColor.white])
+            tipLabel.textColor = UIColor.white
+
+            totalLabel.textColor = UIColor.white
+            totalLabel.backgroundColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
+
+            tipControl.tintColor = UIColor.white
+            self.view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+            UIApplication.shared.statusBarStyle = .lightContent
+
+            billField.keyboardAppearance = .dark
+            billField.resignFirstResponder()
+            billField.becomeFirstResponder()
+        }
     }
 }
 

@@ -14,6 +14,7 @@ class SettingsViewController: UITableViewController {
     var darkModeEnabled: Bool?
 
     @IBOutlet weak var darkModeSwitch: UISwitch!
+    @IBOutlet weak var darkModeLabel: UILabel!
 
     @IBAction func darkModeChanged() {
 
@@ -23,6 +24,7 @@ class SettingsViewController: UITableViewController {
         if (self.darkModeSwitch.isOn == false) {
             self.view.backgroundColor = UIColor.white
             self.darkModeSwitch.superview?.backgroundColor = UIColor.white
+            self.darkModeLabel.textColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
             UIApplication.shared.statusBarStyle = .default
             self.darkModeEnabled = false
         }
@@ -30,6 +32,7 @@ class SettingsViewController: UITableViewController {
         else {
             self.view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
             self.darkModeSwitch.superview?.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+            self.darkModeLabel.textColor = UIColor.white
             UIApplication.shared.statusBarStyle = .lightContent
             self.darkModeEnabled = true
         }

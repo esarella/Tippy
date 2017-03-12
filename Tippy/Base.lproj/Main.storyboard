@@ -172,6 +172,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Pck-N0-WOe"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="darkModeLabel" destination="Bb1-fb-8SR" id="Mz6-Dq-9lv"/>
                         <outlet property="darkModeSwitch" destination="21v-HX-aNA" id="8lo-J5-3e1"/>
                     </connections>
                 </tableViewController>

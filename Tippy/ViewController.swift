@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        billField.placeholder = Locale.current.currencySymbol
         billField.becomeFirstResponder()
 
         let notificationCenter = NotificationCenter.default
@@ -51,6 +52,7 @@ class ViewController: UIViewController {
         } else {
 
             billField.text = ""
+            billField.placeholder = Locale.current.currencySymbol
             tipControl.selectedSegmentIndex = 0
 
             calculateTip(self)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var billField: UITextField!
     @IBOutlet weak var tipLabel: UILabel!
@@ -31,13 +31,13 @@ class ViewController: UIViewController {
         self.darkMode = defaults.bool(forKey: "DarkModeEnabled")
         setBackgroundColours()
 
-
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         billField.placeholder = Locale.current.currencySymbol
+        billField.delegate = self
         billField.becomeFirstResponder()
 
         let notificationCenter = NotificationCenter.default
@@ -81,19 +81,20 @@ class ViewController: UIViewController {
 
     @IBAction func calculateTip(_ sender: AnyObject) {
 
-        let tipPercentage = [0.18, 0.2, 0.25]
-
-        let bill = Double(billField.text!) ?? 0
-        let tip = bill * tipPercentage[tipControl.selectedSegmentIndex]
-        let total = bill + tip
-
         let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = true
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
+        formatter.decimalSeparator = Locale.current.decimalSeparator
+
+        let tipPercentage = [0.18, 0.2, 0.25]
+
+        let billDoubleValue = billField.text!.doubleValue
+        let tip = billDoubleValue * tipPercentage[tipControl.selectedSegmentIndex]
+        let total = billDoubleValue + tip
 
         let myTip = NSNumber(value: Double(tip))
         let myTotal = NSNumber(value: Double(total))
-
 
         let localizedTip = formatter.string(from: myTip)
         let localizedTotal = formatter.string(from: myTotal)
@@ -148,5 +149,30 @@ class ViewController: UIViewController {
             billField.becomeFirstResponder()
         }
     }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if (textField == self.billField) {
+            calculateTip(self)
+        }
+        return true
+    }
+
 }
+
+extension String {
+    var doubleValue: Double {
+        let nf = NumberFormatter()
+        nf.decimalSeparator = "."
+        if let result = nf.number(from: self) {
+            return result.doubleValue
+        } else {
+            nf.decimalSeparator = ","
+            if let result = nf.number(from: self) {
+                return result.doubleValue
+            }
+        }
+        return 0
+    }
+}
+
 

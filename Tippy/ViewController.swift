@@ -14,11 +14,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
-    
+
+    var Timestamp: TimeInterval {
+        return Date().timeIntervalSince1970
+    }
+
+    let defaults = UserDefaults.standard
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         billField.becomeFirstResponder()
+
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(applicationWillResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(applicationWillEnterForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,41 +36,52 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func applicationWillResignActive(notification: NSNotification) {
+        setUserDefaults()
+    }
+
+    func applicationWillEnterForeground(notification: NSNotification)
+    {
+        let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
+
+        if (elapsed < (5 * 60) ) {
+            billField.text = defaults.string(forKey: "BillAmount")
+            tipControl.selectedSegmentIndex = defaults.integer(forKey: "TipControlSegmentIndex")
+
+            calculateTip(self)
+        } else {
+
+            billField.text = ""
+            tipControl.selectedSegmentIndex = 0
+
+            calculateTip(self)
+        }
+        billField.becomeFirstResponder()
+
+    }
+
     @IBAction func onTap(_ sender: Any) {
         self.view.endEditing(true)
     }
-    
+
     @IBAction func calculateTip(_ sender: AnyObject) {
 
         let tipPercentage = [0.18, 0.2, 0.25]
-        
+
         let bill = Double(billField.text!) ?? 0
         let tip = bill * tipPercentage[tipControl.selectedSegmentIndex]
         let total = bill + tip
-        
+
         tipLabel.text = String(format: "$%.2f", tip)
         totalLabel.text = String(format: "$%.2f", total)
-        
-        
-    }
-    
-    func getUserDefaults() -> UserDefaults
-    {
-        let defaults = UserDefaults.standard
-        
-        let timeStamp = defaults.integer(forKey: "TimeStamp")
-        let billAmount = defaults.integer(forKey: "BillAmount")
-        let tipControlSegmentIndex = defaults.integer(forKey: "TipControlSegmentIndex")
-        
-        return defaults
+        setUserDefaults()
+
     }
 
-    func setUserDefaults()
-    {
-        let defaults = UserDefaults.standard
-        defaults.set(25, forKey: "TimeStamp")
-        defaults.set(25, forKey: "BillAmount")
-        defaults.set(1, forKey: "TipControlSegmentIndex")
+    func setUserDefaults() {
+        defaults.set(Timestamp, forKey: "TimeStamp")
+        defaults.set(billField.text, forKey: "BillAmount")
+        defaults.set(tipControl.selectedSegmentIndex, forKey: "TipControlSegmentIndex")
 
         defaults.synchronize()
     }

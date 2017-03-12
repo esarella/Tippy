@@ -40,11 +40,10 @@ class ViewController: UIViewController {
         setUserDefaults()
     }
 
-    func applicationWillEnterForeground(notification: NSNotification)
-    {
+    func applicationWillEnterForeground(notification: NSNotification) {
         let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
 
-        if (elapsed < (5 * 60) ) {
+        if (elapsed < (5 * 60)) {
             billField.text = defaults.string(forKey: "BillAmount")
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "TipControlSegmentIndex")
 
@@ -72,8 +71,19 @@ class ViewController: UIViewController {
         let tip = bill * tipPercentage[tipControl.selectedSegmentIndex]
         let total = bill + tip
 
-        tipLabel.text = String(format: "$%.2f", tip)
-        totalLabel.text = String(format: "$%.2f", total)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.current
+
+        let myTip = NSNumber(value: Double(tip))
+        let myTotal = NSNumber(value: Double(total))
+
+
+        let localizedTip = formatter.string(from: myTip)
+        let localizedTotal = formatter.string(from: myTotal)
+
+        tipLabel.text = localizedTip!
+        totalLabel.text = localizedTotal!
         setUserDefaults()
 
     }

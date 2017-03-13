@@ -31,13 +31,13 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://imgur.com/a/PUB76' title='Tippy app Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/7nAEwc2.gif' title='Tippy app Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<img src='http://imgur.com/a/0WdYX' title='Dark Mode Walkthrough' width='' alt='Dark Mode Walkthrough' />
+<img src='http://i.imgur.com/maTRURk.gif' title='Dark Mode Walkthrough' width='' alt='Dark Mode Walkthrough' />
 
-<img src='http://imgur.com/a/mu3nd' title='Internationalization Walkthrough' width='' alt='Internationalization Walkthrough' />
+<img src='http://i.imgur.com/JjLjC94.gif' title='Internationalization Walkthrough' width='' alt='Internationalization Walkthrough' />
 
-<img src='http://imgur.com/a/rO3Ui' title='Tippy Persisted Settings Walkthrough' width='' alt='Tippy Persisted Settings Walkthrough' />
+<img src='http://i.imgur.com/3uXXR7g.gif' title='Tippy Persisted Settings Walkthrough' width='' alt='Tippy Persisted Settings Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 

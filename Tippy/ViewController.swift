@@ -47,6 +47,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         billField.addTarget(self, action: #selector(textFieldTyping), for: .editingChanged)
         billField.becomeFirstResponder()
 
+        retrieveData()
+
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(applicationWillResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         notificationCenter.addObserver(self, selector: #selector(applicationWillEnterForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
@@ -62,7 +64,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func clearValues() {
-//        billField.text = ""
         tipLabel.text = ""
         totalLabel.text = ""
     }
@@ -78,6 +79,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func applicationWillEnterForeground(notification: NSNotification) {
         self.darkMode = false
+        retrieveData()
+    }
+
+    func retrieveData()
+    {
         let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
 
         if (elapsed < (10 * 60)) {
@@ -94,7 +100,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
             calculateTip(self)
         }
         billField.becomeFirstResponder()
-
     }
 
 

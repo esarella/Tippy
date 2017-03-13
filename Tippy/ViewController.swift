@@ -64,7 +64,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.darkMode = false
         let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
 
-        if (elapsed < (5 * 60)) {
+        if (elapsed < (10 * 60)) {
             billField.text = defaults.string(forKey: "BillAmount")
             tipControl.selectedSegmentIndex = defaults.integer(forKey: "TipControlSegmentIndex")
 

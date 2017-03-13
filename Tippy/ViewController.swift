@@ -51,20 +51,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         notificationCenter.addObserver(self, selector: #selector(applicationWillResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         notificationCenter.addObserver(self, selector: #selector(applicationWillEnterForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
     }
-    
-    func textFieldTyping(textField:UITextField)
-    {
-        if textField.text == ""
-        {
+
+    func textFieldTyping(textField: UITextField) {
+        if textField.text == "" {
             clearValues()
-        }
-        else
-        {
+        } else {
             calculateTip(self)
         }
 
     }
-    
+
     func clearValues() {
 //        billField.text = ""
         tipLabel.text = ""
@@ -100,7 +96,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         billField.becomeFirstResponder()
 
     }
-    
+
 
     @IBAction func onTap(_ sender: Any) {
         self.view.endEditing(true)
@@ -198,7 +194,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if(motion == .motionShake) {
+        if (motion == .motionShake) {
             self.billField.text = ""
             clearValues()
         }

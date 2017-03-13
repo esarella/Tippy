@@ -67,7 +67,7 @@ class SettingsViewController: UITableViewController {
         self.view.backgroundColor = Style.darkMode
         self.darkModeSwitch.superview?.backgroundColor = Style.darkMode
         self.darkModeLabel.textColor = Style.lightColor
-      
+
         self.defaultTipPercentageControl.tintColor = Style.darkMode
         self.defaultTipPercentageControl.backgroundColor = Style.lightColor
         UIApplication.shared.statusBarStyle = .lightContent

@@ -4,7 +4,7 @@
 
 Submitted by: **Emmanuel Sarella**
 
-Time spent: **8** hours spent in total
+Time spent: **12** hours spent in total
 
 ## User Stories
 
@@ -15,7 +15,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 * [X] UI animations
-* [X] Remembering the bill amount across app restarts (if <10mins)
+* [X] Remembering the bill amount across app restarts (if elapsed time < 10mins)
 * [X] Using locale-specific currency and currency thousands separators.
 * [X] Making sure the keyboard is always visible and the bill amount is always the first responder. This way the user doesn't have to tap anywhere to use this app. Just launch the app and start typing.
 
@@ -23,22 +23,34 @@ The following **additional** features are implemented:
 
 * [X] Dark Mode Setting
 * [X] Settings persisted on app relaunch
-* [X] Tip and Total calculated instantly (as soon as typing is stopped)
-
-
+* [X] Auto Update values while typing
+* [X] Shake gesture will clear bill amount and reset values
 
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://imgur.com/a/PUB76' title='Tippy app Video Walkthrough' width='' alt='Video Walkthrough' />
+
+<img src='http://imgur.com/a/0WdYX' title='Dark Mode Walkthrough' width='' alt='Dark Mode Walkthrough' />
+
+<img src='http://imgur.com/a/mu3nd' title='Internationalization Walkthrough' width='' alt='Internationalization Walkthrough' />
+
+<img src='http://imgur.com/a/rO3Ui' title='Tippy Persisted Settings Walkthrough' width='' alt='Tippy Persisted Settings Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Manipulating Color Schemes was hard. Next time I will be using a library to have various color scheme modes.
+
+UI polishing and wrestling with autolayout took more time than expected
+
+Swift was fun, coming from Obj-C I had to get used to the changed syntax, Once I kept going it was very intuitive.
+
+Excited about the Codepath course. Dreaming of gaining skills to make killer apps.
+
 
 ## License
 

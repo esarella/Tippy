@@ -37,6 +37,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.darkMode = defaults.bool(forKey: "DarkModeEnabled")
         setBackgroundColours()
 
+        calculateTip(self)
+
     }
 
     override func viewDidLoad() {
@@ -82,8 +84,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         retrieveData()
     }
 
-    func retrieveData()
-    {
+    func retrieveData() {
         let elapsed = Date().timeIntervalSince1970 - defaults.double(forKey: "TimeStamp")
 
         if (elapsed < (10 * 60)) {

@@ -28,6 +28,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         billField.borderStyle = .none
         billField.layer.borderWidth = 0
 
+        let defaultTipPercentage = defaults.integer(forKey: "DefaultTipPercentage")
+
+        if (defaultTipPercentage != nil)
+        {
+            self.tipControl.selectedSegmentIndex = defaultTipPercentage
+        }
+
         self.darkMode = defaults.bool(forKey: "DarkModeEnabled")
         setBackgroundColours()
 
@@ -114,8 +121,24 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setBackgroundColours() {
-        if (!self.darkMode!) {
+        if (self.darkMode!) {
+            self.view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+            billField.textColor = UIColor.white
+            billField.attributedPlaceholder = NSAttributedString(string: billField.placeholder!,
+                    attributes: [NSForegroundColorAttributeName: UIColor.white])
+            tipLabel.textColor = UIColor.white
+            totalLabel.textColor = UIColor.white
+            totalLabel.backgroundColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
 
+            tipControl.tintColor = UIColor.white
+            UIApplication.shared.statusBarStyle = .lightContent
+
+            billField.keyboardAppearance = .dark
+            billField.resignFirstResponder()
+            billField.becomeFirstResponder()
+        }
+        else {
+            self.view.backgroundColor = UIColor.white
             billField.textColor = UIColor(red: 0.2, green: 0.15, blue: 0.15, alpha: 1)
             tipLabel.textColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
 
@@ -123,31 +146,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
             totalLabel.backgroundColor = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
 
             tipControl.tintColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-            self.view.backgroundColor = UIColor.white
             UIApplication.shared.statusBarStyle = .default
 
             billField.keyboardAppearance = .light
             billField.resignFirstResponder()
             billField.becomeFirstResponder()
         }
-        //DARK
-        else {
-            billField.textColor = UIColor.white
-            billField.attributedPlaceholder = NSAttributedString(string: billField.placeholder!,
-                    attributes: [NSForegroundColorAttributeName: UIColor.white])
-            tipLabel.textColor = UIColor.white
 
-            totalLabel.textColor = UIColor.white
-            totalLabel.backgroundColor = UIColor(red: 0.13, green: 0.13, blue: 0.13, alpha: 1)
-
-            tipControl.tintColor = UIColor.white
-            self.view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-            UIApplication.shared.statusBarStyle = .lightContent
-
-            billField.keyboardAppearance = .dark
-            billField.resignFirstResponder()
-            billField.becomeFirstResponder()
-        }
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -156,6 +161,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+
 
 }
 

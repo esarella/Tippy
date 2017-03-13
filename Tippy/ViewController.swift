@@ -176,6 +176,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         UIApplication.shared.statusBarStyle = .default
     }
 
+    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
+        if(motion == .motionShake) {
+            self.billField.text = "0"
+            calculateTip(self)
+        }
+    }
+
 }
 
 extension String {

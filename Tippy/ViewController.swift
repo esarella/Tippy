@@ -132,31 +132,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
 
     func setDarkMode() {
-        let darkColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-        let lightTextColor = UIColor.white
-
-        self.view.backgroundColor = darkColor
-        billField.textColor = lightTextColor
+        self.view.backgroundColor = Style.darkColor
+        billField.textColor = Style.lightTextColor
         billField.attributedPlaceholder = NSAttributedString(string: billField.placeholder!,
-                attributes: [NSForegroundColorAttributeName: UIColor.white])
-        tipLabel.textColor = lightTextColor
-        totalLabel.textColor = lightTextColor
-        totalLabel.backgroundColor = darkColor
+                attributes: [NSForegroundColorAttributeName: Style.lightTextColor])
+        tipLabel.textColor = Style.lightTextColor
+        totalLabel.textColor = Style.lightTextColor
+        totalLabel.backgroundColor = Style.darkColor
 
-        tipControl.tintColor = lightTextColor
+        tipControl.tintColor = Style.lightTextColor
         UIApplication.shared.statusBarStyle = .lightContent
     }
 
     func setLightMode() {
-        let lightColor = UIColor.white
-        let darkTextColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-
-        self.view.backgroundColor = lightColor
-        billField.textColor = darkTextColor
-        tipLabel.textColor = darkTextColor
-        totalLabel.textColor = darkTextColor
-        totalLabel.backgroundColor = lightColor
-        tipControl.tintColor = darkTextColor
+        self.view.backgroundColor = Style.lightColor
+        billField.textColor = Style.darkTextColor
+        tipLabel.textColor = Style.darkTextColor
+        totalLabel.textColor = Style.darkTextColor
+        totalLabel.backgroundColor = Style.lightColor
+        tipControl.tintColor = Style.darkTextColor
         UIApplication.shared.statusBarStyle = .default
     }
 

@@ -64,24 +64,17 @@ class SettingsViewController: UITableViewController {
     }
 
     func setDarkMode() {
-        let darkColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-        let lightTextColor = UIColor.white
-
-        self.view.backgroundColor = darkColor
-        self.darkModeSwitch.superview?.backgroundColor = darkColor
-        self.darkModeLabel.textColor = lightTextColor
-        self.defaultTipPercentageControl.tintColor = darkColor
+        self.view.backgroundColor = Style.darkColor
+        self.darkModeSwitch.superview?.backgroundColor = Style.darkColor
+        self.darkModeLabel.textColor = Style.lightTextColor
+        self.defaultTipPercentageControl.tintColor = Style.darkColor
         UIApplication.shared.statusBarStyle = .lightContent
     }
 
     func setLightMode() {
-        let lightColor = UIColor.white
-        let darkTextColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-
-
-        self.view.backgroundColor = lightColor
-        self.darkModeSwitch.superview?.backgroundColor = lightColor
-        self.darkModeLabel.textColor = darkTextColor
+        self.view.backgroundColor = Style.lightColor
+        self.darkModeSwitch.superview?.backgroundColor = Style.lightColor
+        self.darkModeLabel.textColor = Style.darkTextColor
 
         self.defaultTipPercentageControl.tintColor = UIColor.black
         self.defaultTipPercentageControl.superview?.tintColor = UIColor.black

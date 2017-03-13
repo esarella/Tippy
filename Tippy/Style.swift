@@ -7,22 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct Style{
-//    static var sectionHeaderTitleFont = UIFont(name: "Helvetica-Bold", size: 20)
-//    static var sectionHeaderTitleColor = UIColor.whiteColor()
-//    static var sectionHeaderBackgroundColor = UIColor.blackColor()
-//    static var sectionHeaderBackgroundColorHighlighted = UIColor.grayColor()
-//    static var sectionHeaderAlpha: CGFloat = 1.0
-//    
-//    
-//    static func themeBlue(){
-//        // MARK: ToDo Table Section Headers
-//        sectionHeaderTitleFont = Font
-//        sectionHeaderTitleFont = UIFont(name: "Helvetica", size: 18)
-//        sectionHeaderTitleColor = UIColor.whiteColor()
-//        sectionHeaderBackgroundColor = UIColor.blueColor()
-//        sectionHeaderBackgroundColorHighlighted = UIColor.lightGrayColor()
-//        sectionHeaderAlpha: CGFloat = 0.8
-//    }
+
+    static var darkColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+    static var lightTextColor = UIColor.white
+    static var lightColor = UIColor.white
+    static var darkTextColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+
 }

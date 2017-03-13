@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,100 +21,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zE8-8e-ugw">
-                                <rect key="frame" x="9" y="449" width="356" height="9"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvw-xB-hU3" userLabel="Bill View">
+                                <rect key="frame" x="0.0" y="60" width="375" height="220"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="37" translatesAutoresizingMaskIntoConstraints="NO" id="U6u-mj-xpe">
+                                        <rect key="frame" x="15" y="25" width="344" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="62"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                        <connections>
+                                            <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="etX-oD-rkg"/>
+                                        </connections>
+                                    </textField>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zE8-8e-ugw" userLabel="divider">
+                                        <rect key="frame" x="0.0" y="115" width="375" height="2"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </view>
+                                    <label opaque="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-ut9" userLabel="Tip Label">
+                                        <rect key="frame" x="20" y="150" width="165" height="33.5"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bGM-SW-Q2W">
+                                        <rect key="frame" x="196" y="152" width="163" height="29"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <segments>
+                                            <segment title="18%"/>
+                                            <segment title="20%"/>
+                                            <segment title="25%"/>
+                                        </segments>
+                                        <color key="tintColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <connections>
+                                            <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="SCU-Dg-VEL"/>
+                                        </connections>
+                                    </segmentedControl>
+                                </subviews>
+                                <color key="backgroundColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" textAlignment="right" minimumFontSize="37" translatesAutoresizingMaskIntoConstraints="NO" id="U6u-mj-xpe">
-                                <rect key="frame" x="16" y="300" width="344" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Xh4-C9-gVp"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="62"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="etX-oD-rkg"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb8-zt-hgn">
-                                <rect key="frame" x="16" y="484" width="38" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdj-e1-ItS" userLabel="Total Label">
-                                <rect key="frame" x="171" y="484" width="188" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="188" id="4Ze-lH-i1L"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-92-pC6">
-                                <rect key="frame" x="16" y="410" width="25" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NrN-DT-ut9" userLabel="Tip Label">
-                                <rect key="frame" x="171" y="410" width="188" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bGM-SW-Q2W">
-                                <rect key="frame" x="16" y="527" width="343" height="29"/>
-                                <segments>
-                                    <segment title="18%"/>
-                                    <segment title="20%"/>
-                                    <segment title="25%"/>
-                                </segments>
-                                <connections>
-                                    <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="SCU-Dg-VEL"/>
-                                </connections>
-                            </segmentedControl>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUb-Xu-1x1" userLabel="TotalView">
+                                <rect key="frame" x="0.0" y="269" width="375" height="398"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb8-zt-hgn">
+                                        <rect key="frame" x="21" y="27" width="70" height="18"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mdj-e1-ItS" userLabel="Total Label">
+                                        <rect key="frame" x="21" y="53" width="334" height="62"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="62"/>
+                                        <color key="textColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="zE8-8e-ugw" firstAttribute="centerX" secondItem="bGM-SW-Q2W" secondAttribute="centerX" id="2Q1-mO-U0B"/>
-                            <constraint firstItem="bJu-92-pC6" firstAttribute="leading" secondItem="Fb8-zt-hgn" secondAttribute="leading" id="3mW-6r-reJ"/>
-                            <constraint firstItem="zE8-8e-ugw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-7" id="9pK-p4-OoA"/>
-                            <constraint firstItem="Fb8-zt-hgn" firstAttribute="leading" secondItem="bGM-SW-Q2W" secondAttribute="leading" id="AIY-Wv-qjQ"/>
-                            <constraint firstItem="NrN-DT-ut9" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="CBX-vY-Xz8"/>
-                            <constraint firstItem="bJu-92-pC6" firstAttribute="top" secondItem="U6u-mj-xpe" secondAttribute="bottom" constant="30" id="GNg-JZ-PUk"/>
-                            <constraint firstItem="U6u-mj-xpe" firstAttribute="leading" secondItem="bJu-92-pC6" secondAttribute="leading" id="Iw7-tx-zKA"/>
-                            <constraint firstItem="U6u-mj-xpe" firstAttribute="centerX" secondItem="bGM-SW-Q2W" secondAttribute="centerX" id="Mas-sQ-5dh"/>
-                            <constraint firstItem="U6u-mj-xpe" firstAttribute="top" secondItem="M00-zI-C3M" secondAttribute="bottom" constant="236" id="Pe1-4n-CSK"/>
-                            <constraint firstItem="NrN-DT-ut9" firstAttribute="trailing" secondItem="mdj-e1-ItS" secondAttribute="trailing" id="R3x-oP-leK"/>
-                            <constraint firstItem="Fb8-zt-hgn" firstAttribute="baseline" secondItem="mdj-e1-ItS" secondAttribute="baseline" id="Rj1-LC-ZYK"/>
-                            <constraint firstItem="mdj-e1-ItS" firstAttribute="trailing" secondItem="bGM-SW-Q2W" secondAttribute="trailing" id="Wrf-4L-ULZ"/>
-                            <constraint firstItem="Fb8-zt-hgn" firstAttribute="top" secondItem="zE8-8e-ugw" secondAttribute="bottom" constant="26" id="bW8-Ya-9oP"/>
-                            <constraint firstItem="NrN-DT-ut9" firstAttribute="leading" secondItem="mdj-e1-ItS" secondAttribute="leading" id="djd-Eu-dZn"/>
-                            <constraint firstItem="zE8-8e-ugw" firstAttribute="top" secondItem="bJu-92-pC6" secondAttribute="bottom" constant="18" id="grw-XL-9Er"/>
-                            <constraint firstItem="bGM-SW-Q2W" firstAttribute="top" secondItem="Fb8-zt-hgn" secondAttribute="bottom" constant="22" id="j1Q-Ot-7az"/>
-                            <constraint firstItem="U6u-mj-xpe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="j9w-Fh-jCd"/>
-                            <constraint firstItem="kBg-1Q-CsS" firstAttribute="top" secondItem="bGM-SW-Q2W" secondAttribute="bottom" constant="112" id="mQp-Tp-fT1"/>
-                            <constraint firstItem="bJu-92-pC6" firstAttribute="baseline" secondItem="NrN-DT-ut9" secondAttribute="baseline" id="sdF-Ze-XXS"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="rRc-nm-zTF" appends="YES" id="ZZl-2f-dnf"/>
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="UAy-d5-aPB">
                         <barButtonItem key="rightBarButtonItem" title="Settings" id="pj0-wV-JV5">
+                            <color key="tintColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="C3U-ys-FZm" kind="push" id="SKe-vE-OhQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="billArea" destination="fvw-xB-hU3" id="BkG-R4-kWn"/>
                         <outlet property="billField" destination="U6u-mj-xpe" id="e6S-Ix-W41"/>
+                        <outlet property="divider" destination="zE8-8e-ugw" id="g0C-qY-LPp"/>
                         <outlet property="tipControl" destination="bGM-SW-Q2W" id="VAV-h6-kFF"/>
                         <outlet property="tipLabel" destination="NrN-DT-ut9" id="nTr-PM-Lzq"/>
+                        <outlet property="totalArea" destination="fUb-Xu-1x1" id="tdj-Qa-NG3"/>
                         <outlet property="totalLabel" destination="mdj-e1-ItS" id="XUf-eV-lJ6"/>
+                        <outlet property="totalText" destination="Fb8-zt-hgn" id="mgZ-ue-4V0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -134,7 +126,9 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="9ei-NZ-b2F">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="sectionIndexBackgroundColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="lX5-OF-0Nv">
                                 <cells>
@@ -160,6 +154,7 @@
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -181,13 +176,16 @@
                                                         <segment title="20%"/>
                                                         <segment title="25%"/>
                                                     </segments>
+                                                    <color key="tintColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <connections>
                                                         <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="valueChanged" id="udo-T5-7vw"/>
                                                         <action selector="defaultTipChanged:" destination="C3U-ys-FZm" eventType="valueChanged" id="BQi-ea-TTl"/>
                                                     </connections>
                                                 </segmentedControl>
                                             </subviews>
+                                            <color key="tintColor" red="0.76420527699999996" green="0.91445082430000002" blue="0.90700000520000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -198,7 +196,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="hp2-et-77Q">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="Pck-N0-WOe"/>
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Pck-N0-WOe">
+                            <color key="tintColor" red="0.14496314530000001" green="0.52654153110000002" blue="0.51986110210000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="darkModeLabel" destination="Bb1-fb-8SR" id="Mz6-Dq-9lv"/>

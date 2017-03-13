@@ -22,31 +22,15 @@ class SettingsViewController: UITableViewController {
         defaults.set(darkModeSwitch.isOn, forKey: "DarkModeEnabled")
         defaults.synchronize()
 
-        if (self.darkModeSwitch.isOn == true)
-        {
-            self.view.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-            self.darkModeSwitch.superview?.backgroundColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-            self.darkModeLabel.textColor = UIColor.white
-
-            self.defaultTipPercentageControl.tintColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-
-            UIApplication.shared.statusBarStyle = .lightContent
+        if (self.darkModeSwitch.isOn == true) {
             self.darkModeEnabled = true
-        }
-        else
-        {
-            self.view.backgroundColor = UIColor.white
-            self.darkModeSwitch.superview?.backgroundColor = UIColor.white
-            self.darkModeLabel.textColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
-            
-            self.defaultTipPercentageControl.tintColor = UIColor.black
-            self.defaultTipPercentageControl.superview?.tintColor = UIColor.black
-
-            UIApplication.shared.statusBarStyle = .default
+            setDarkMode()
+        } else {
             self.darkModeEnabled = false
+            setLightMode()
         }
     }
-    
+
     @IBAction func defaultTipChanged(_ sender: Any) {
         defaults.set(defaultTipPercentageControl.selectedSegmentIndex, forKey: "DefaultTipPercentage")
         defaults.synchronize()
@@ -58,13 +42,8 @@ class SettingsViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        self.defaultTipPercentageControl.selectedSegmentIndex = defaults.integer(forKey: "DefaultTipPercentage")
         self.darkModeEnabled = defaults.bool(forKey: "DarkModeEnabled")
-        let defaultTipPercentage = defaults.integer(forKey: "DefaultTipPercentage")
-
-        if (defaultTipPercentage != nil)
-        {
-            self.defaultTipPercentageControl.selectedSegmentIndex = defaultTipPercentage
-        }
 
         if (self.darkModeEnabled!) {
             self.darkModeSwitch.setOn(true, animated: false)
@@ -84,4 +63,29 @@ class SettingsViewController: UITableViewController {
         return 1;
     }
 
+    func setDarkMode() {
+        let darkColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+        let lightTextColor = UIColor.white
+
+        self.view.backgroundColor = darkColor
+        self.darkModeSwitch.superview?.backgroundColor = darkColor
+        self.darkModeLabel.textColor = lightTextColor
+        self.defaultTipPercentageControl.tintColor = darkColor
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+
+    func setLightMode() {
+        let lightColor = UIColor.white
+        let darkTextColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 1)
+
+
+        self.view.backgroundColor = lightColor
+        self.darkModeSwitch.superview?.backgroundColor = lightColor
+        self.darkModeLabel.textColor = darkTextColor
+
+        self.defaultTipPercentageControl.tintColor = UIColor.black
+        self.defaultTipPercentageControl.superview?.tintColor = UIColor.black
+
+        UIApplication.shared.statusBarStyle = .default
+    }
 }

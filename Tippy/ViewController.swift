@@ -44,11 +44,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
         billField.placeholder = Locale.current.currencySymbol
         billField.delegate = self
+        billField.addTarget(self, action: #selector(textFieldTyping), for: .editingChanged)
         billField.becomeFirstResponder()
 
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(applicationWillResignActive), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         notificationCenter.addObserver(self, selector: #selector(applicationWillEnterForeground), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+    }
+    
+    func textFieldTyping(textField:UITextField)
+    {
+        if textField.text == ""
+        {
+            clearValues()
+        }
+        else
+        {
+            calculateTip(self)
+        }
+
+    }
+    
+    func clearValues() {
+//        billField.text = ""
+        tipLabel.text = ""
+        totalLabel.text = ""
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,6 +100,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         billField.becomeFirstResponder()
 
     }
+    
 
     @IBAction func onTap(_ sender: Any) {
         self.view.endEditing(true)
@@ -178,8 +199,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if(motion == .motionShake) {
-            self.billField.text = "0"
-            calculateTip(self)
+            self.billField.text = ""
+            clearValues()
         }
     }
 

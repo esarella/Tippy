@@ -195,6 +195,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         if (motion == .motionShake) {
+
+            let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+            animation.duration = 0.6
+            animation.values = [-20, 20, -20, 20, -10, 10, -5, 5, 0]
+            self.view.layer.add(animation, forKey: "shake")
+
             self.billField.text = ""
             clearValues()
         }

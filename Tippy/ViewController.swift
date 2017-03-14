@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var billField: UITextField!
+    @IBOutlet weak var tipText: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var tipControl: UISegmentedControl!
@@ -44,6 +45,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        billField.adjustsFontSizeToFitWidth = true
+        tipLabel.adjustsFontSizeToFitWidth = true
+        totalLabel.adjustsFontSizeToFitWidth = true
+
         billField.placeholder = Locale.current.currencySymbol
         billField.delegate = self
         billField.addTarget(self, action: #selector(textFieldTyping), for: .editingChanged)
@@ -62,7 +67,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         } else {
             calculateTip(self)
         }
-
     }
 
     func clearValues() {
@@ -163,6 +167,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         divider.backgroundColor = Style.darkMode
 
         tipLabel.textColor = Style.darkMode
+        tipText.textColor = Style.darkMode
         tipControl.tintColor = Style.darkMode
         tipControl.backgroundColor = Style.darkColor
 
@@ -184,6 +189,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         divider.backgroundColor = Style.darkColor
 
         tipLabel.textColor = Style.darkColor
+        tipText.textColor = Style.darkColor
         tipControl.tintColor = Style.darkColor
         tipControl.backgroundColor = Style.lightColor
 

@@ -14,7 +14,6 @@ struct Style {
     static var darkColor = UIColor(rgb: 0x258685)
     static var lightColor = UIColor(rgb: 0xC2E9E7)
     static var darkMode = UIColor(rgb: 0x232923)
-
 }
 
 extension UIColor {
